@@ -1,1 +1,1 @@
-callback_isInternetOn(true);
+callback_isInternetOn();
