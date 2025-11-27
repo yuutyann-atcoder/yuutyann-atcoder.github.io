@@ -26,17 +26,28 @@
             <button onclick="location.reload()">click</button>
         </div>
         <h1 style="text-align: center; font-size: 10vw;">残り時間</h1>
-        <p style="font-size: 12vw; text-align : center"> 12:00:00.000</p>
+        <p style="font-size: 12vw; text-align : center" id="timeRemaining"> 12:00:00.000</p>
     </div>
     <div class="scene3" id="scene3" style="display: none;">
         <h1>12分間走 結果</h1>
     </div>
     <script>
+        var startingTime = null;
+        function showTimeRemaining() {
+            var timeRemain = Date.now() - startingTime;
+            var miliseconds = "." + String((1000 - (timeRemain % 1000)) % 1000).padStart(3,"0");
+            var seconds = ":" + String((60 - (Math.ceil(timeRemain / 1000) % 60)) % 60).padStart(2,"0");
+            var minutes = String(12 - Math.ceil(timeRemain / 60000));
+            document.getElementById("timeRemaining").innerText = minutes + seconds + miliseconds;
+        }
         function startCooperTest() {
             document.getElementById("scene1").style.display = "none";
             document.getElementById("scene2").style.display = "inline";
             document.documentElement.requestFullscreen();
+            startingTime = Date.now();
+            setInterval(showTimeRemaining,1);
         }
+
         document.getElementById("cooperTestStartButton").addEventListener("click", startCooperTest);
     </script>
 </body>
