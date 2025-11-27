@@ -4,35 +4,40 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>12分間走ヘルパー.html</title>
+    <style>
+        .scene2header {
+            display: flex;
+        }
+    </style>
 </head>
 <body>
     <div class="root" id="root">
-        
-        <div class="scene1" id="scene1" style="display: inline">
-            <h1>
-                12分間走ヘルパー.html
-            </h1>
-            <button class="cooperTestStartButton" id="cooperTestStartButton">
-                12分間走開始 (フルスクリーンに遷移)
-            </button>
-        </div>
-        
-        <div class="scene2" id="scene2" style="display: none;">
-            <h1>残り時間</h1>
-        </div>
-        
-        <div class="scene3" id="scene3" style="display: none;">
-            <h1>12分間走 結果</h1>
-        </div>
-        
-        <script>
-            function startCooperTest() {
-                document.getElementById("scene1").style.display = "none";
-                document.getElementById("scene2").style.display = "inline";
-                document.documentElement.requestFullscreen();
-            }
-            document.getElementById("cooperTestStartButton").addEventListener("click", startCooperTest);
-        </script>
+    <div class="scene1" id="scene1" style="display: inline">
+        <h1>
+            12分間走ヘルパー.html
+        </h1>
+        <button class="cooperTestStartButton" id="cooperTestStartButton">
+            12分間走開始 (フルスクリーンに遷移)
+        </button>
     </div>
+    <div class="scene2" id="scene2" style="display: none;">
+        <div class = "scene2header">
+            <p>開始画面に戻る</p>
+            <button onclick="location.reload()">click</button>
+        </div>
+        <h1 style="text-align: center; font-size: 10vw;">残り時間</h1>
+        <p style="font-size: 12vw; text-align : center"> 12:00:00.000</p>
+    </div>
+    <div class="scene3" id="scene3" style="display: none;">
+        <h1>12分間走 結果</h1>
+    </div>
+    <script>
+        function startCooperTest() {
+            document.getElementById("scene1").style.display = "none";
+            document.getElementById("scene2").style.display = "inline";
+            document.documentElement.requestFullscreen();
+        }
+        document.getElementById("cooperTestStartButton").addEventListener("click", startCooperTest);
+    </script>
 </body>
 </html>
